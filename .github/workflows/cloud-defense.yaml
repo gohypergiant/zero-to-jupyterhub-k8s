@@ -27,4 +27,4 @@ jobs:
         curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz
         tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz
         chmod +x /tmp/cdefense
-        /tmp/cdefense scan --lang=python --project-name="scoa-doctr-ds" --api-key=fd0c8222-3008-e9c4-234e-2b11f99565b3 --path=devrequirements.txt
+        /tmp/cdefense scan --lang=python --project-name="scoa-doctr-ds" --api-key=fd0c8222-3008-e9c4-234e-2b11f99565b3 --path=dev-requirements.txt
