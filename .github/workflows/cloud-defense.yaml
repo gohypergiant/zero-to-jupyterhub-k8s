@@ -3,10 +3,10 @@ name: Cloud Defense Scan
 on:
   push:
     branches:
-      - stable
+      - master
   pull_request:
     branches:
-      - stable
+      - master
 
 jobs:
   build:
