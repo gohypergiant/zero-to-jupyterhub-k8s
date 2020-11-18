@@ -1,0 +1,30 @@
+name: Cloud Defense Scan
+
+on:
+  push:
+    branches:
+      - stable
+  pull_request:
+    branches:
+      - stable
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Set Env
+      run: echo 'GITHUB_REGISTRY_TOKEN=""' >> $GITHUB_ENV
+    - name: Cloud Defense Scan
+      run: |
+        python --version
+        pip install -r dev-requirements.txt
+        curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz
+        tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz
+        chmod +x /tmp/cdefense
+        /tmp/cdefense scan --lang=python --project-name="scoa-doctr-ds" --api-key=fd0c8222-3008-e9c4-234e-2b11f99565b3 --path=devrequirements.txt
